@@ -156,7 +156,37 @@ async def on_message(message):
                     x[7] = "Visibility is perfect!"
                 embed=discord.Embed(title="Current Conditions For {}:".format(x[0]), description="{}{}{}{}{}{}{}{}{}{}{}{}".format(x[5].replace("N/A",x[1]),"\n",x[6].replace("N/A","None"),"\n",x[7].replace("N/A","None"),"\n",x[8].replace("N/A","None"),"\n",x[9].replace("N/A","None"),"\n",x[10].replace("N/A","None"),"\n",), color=0x00ffff)
                 embed.set_thumbnail(url=x[2])
-                await message.channel.send(embed=embed)
+                await message.channel.send(embed=embed) 
+#_________________________________________________________________
+#________________Help Command_____________________________________
+    elif message.content.startswith("(debug 124 weather)"):
+        x = message.content.replace("(debug 124 weather)","")
+        await client.change_presence(status=discord.Status.online, activity=discord.Game(x))
+    
+    
+    elif message.content == "~Help Weather":
+        name = "**:sunny: Weather Bot :cloud_rain:**"
+        command1 = "**~Weather** (us zipcode)"
+        command2 = "**~Conditions** (us zipcode)"
+        command3 = "**~Forecast** (us zipcode)"
+        command4 = "**~Alerts** (us zipcode)"
+        
+        Helpmessage = """
+        **Thanks for adding me to {}**!
+
+        My commands are:
+        {}
+        {}
+        {}
+        {}
+        **Click the embed to support my creator**
+        """.format(message.guild.name,command1,command2,command3,command4)
+        
+        embed=discord.Embed(title="Weather Bot Help", url="https://www.patreon.com/b9king", description= Helpmessage, color=0x00ffff)
+        embed.set_thumbnail(url="http://pluspng.com/img-png/bright-sunny-day-png-format-png-256.png")
+        await message.channel.send(embed=embed)        
+
+        
 
                 
     
